@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <title>发票管理</title>
+    <link rel="stylesheet" type="text/css" href="css/invoice.css"/>
+</head>
+<body>
+    <div  class="y-out-content">
+        <div class="y-content">  
+            <div class="y-content-top">
+                <div class="y-new-invoice">
+                    <input  class="y-new" type="button" value="新建发票" />	
+                    <div class="y-daochu"><i class="iconfont icon-daochu1"></i>导出</div>
+                </div>
+                <div class="y-serach">
+                    <input type="button" value="请输入搜索内容..."/>
+                    <i class="iconfont icon-sousuo"></i>
+                </div>
+            </div> 
+        </div>
+        <table id="t" class="y-content-center" cellspaceing="0" cellpadding="0">
+            <tr class="y-content-head">
+                <th>供应商名称</th>
+                <th>发票日期<i class="iconfont icon-shangxiasanjiaoxing"></i></th>
+                <th>发票号码<i class="iconfont icon-shangxiasanjiaoxing"></i></th>
+                <th>发票金额<i class="iconfont icon-shangxiasanjiaoxing"></i></th>
+                <th>发票类型</th>
+            </tr>
+           
+            <tr class="y-content-list">
+                <td>供应商1</td>
+                <td>2018-06-22</td>
+                <td>dweedw3</td>
+                <td>￥2.00</td>
+                <td>普通发票</td>
+            </tr>
+           
+        </table>
+        <div class="y-out-content-footer">
+            <div class="y-content-footer">
+                <div class="y-collect">汇总|发票金额:￥632 069.92</div>
+                <div class="box" id="box"></div>
+            </div>
+        </div>
+       
+    </div> 
+    <div class="m-modal">
+        <div class="y-m-model">
+            <div class="y-new-content-top">
+                新建发票
+                <span class="m-modal-close">&times;</span>
+            </div>
+            <div class="y-new-content-center">
+                <ul>
+                    <li><i class="iconfont icon-star_key"></i>发票类型</li>
+                    <select id="classfiId">
+                        <option value="普通发票" checked>普通发票</option>
+                        <option value="机打发票">机打发票</option>
+                        <option value="定额发票">定额发票</option>
+                        <option value="增值税专用发票">增值税专用发票</option>
+                    </select>
+                </ul>
+                <ul>
+                    <li><i class="iconfont icon-star_key"></i>发票日期</li>
+                    <select id="dateId" >
+                        <option value="2018-06-28" checked>2018-06-28</option>
+                    </select>
+                    
+                </ul>
+                <ul>
+                    <li><i class="iconfont icon-star_key"></i>发票号码</li>
+                    <input id="numId" type="text" onfocus="javascript:this.value='';this.style.color='black'"  value="请输入发票号码"/>
+                </ul>
+                <ul>
+                    <li><i class="iconfont icon-star_key"></i>发票金额</li>
+                    <input id="moneyId" type="text" onfocus="javascript:this.value='';this.style.color='black'" value="请输入发票金额"/>
+                </ul>
+                <ul>
+                    <li>税率</li>
+                    <select>
+                        <option value="3%" checked>3%</option>
+                        <option value="10%">10%</option>
+                        <option value="20%">20%</option>
+                        <option value="25%">25%</option>
+                        <option value="30%">30%</option>
+                        <option value="35%">35%</option>
+                        <option value="45%">45%</option>
+                    </select>
+                </ul>
+                <ul>
+                    <li>税额</li>
+                    <input type="text" onfocus="javascript:this.value='';this.style.color='black'" value="请输入税额"/>
+                </ul>
+                <ul>
+                    <li><i class="iconfont icon-star_key"></i>供应商</li>
+                    <select id="businessId" class="supplier">
+                        <option value="供应商1" checked>供应商1</option>
+                        <option value="供应商2">供应商2</option>
+                        <option value="供应商3">供应商3</option>
+                        <option value="供应商4">供应商4</option>
+                    </select>
+                </ul>
+                <ul>
+                    <li><i class="iconfont icon-star_key"></i>关联合同</li>
+                    <span><h5>已选择0个合同</h5> <button id="y-btn1">[点击选择]</button></span>
+                </ul>
+                <ul>
+                    <li>附件</li>
+                    <button class="y-choice"><i class="iconfont icon-add"></i>点击添加附件</button>
+                </ul>
+            </div>
+            <div class="m-bottom">
+                <form action="">
+                    <input class="m-btn-cancel" type="button" onclick="deletePerson(this)" value="取消"/>
+                    <input class="m-btn-sure" type="button" onclick="addInfor()" value="保存"/>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/paging.js"></script>
+    <script>
+            var setTotalCount = 301;
+            $('#box').paging({
+                initPageNo: 1, // 初始页码
+                totalPages: 30, //总页数
+                totalCount: '合计' + setTotalCount + '条数据', // 条目总数
+                slideSpeed: 600, // 缓动速度。单位毫秒
+                jump: true, //是否支持跳转
+                callback: function(page) { // 回调函数
+                    console.log(page);
+                }
+            })
+    </script>
+</body>
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="js/jquery.my-modal.1.1.js"></script>
+<script>
+     var m1 = new MyModal.modal(function() {
+         alert("请确认");
+    });
+     $('.y-new').on("click", function() {
+        m1.show();
+   });
+</script>
+<script type="text/javascript">
+     function deletePerson(obj){
+        if(confirm("亲，您真的要取消吗？")==true){
+            var trDom  = obj.parentNode.parentNode;
+            trDom.parentNode.removeChild(trDom);	
+        }	
+    }
+
+    function addInfor(){
+        //二、完成表格行的增加
+        //1)、获取数据
+        var business= document.getElementById("businessId").value;
+        var date= document.getElementById("dateId").value;
+        var num= document.getElementById("numId").value;
+        var money= document.getElementById("moneyId").value;
+        var classfi= document.getElementById("classfiId").value;
+        
+        //2)、给表格创建行和列
+        var tableDom  = document.getElementById("t");
+        var rowDom = tableDom.insertRow();
+        var businessCellDom = rowDom.insertCell();
+        businessCellDom.innerHTML = business;
+
+
+        var dateCellDom = rowDom.insertCell();
+        dateCellDom.innerHTML = date;
+        var numCellDom = rowDom.insertCell();
+        numCellDom.innerHTML = num;
+        var moneyCellDom = rowDom.insertCell();
+        moneyCellDom.innerHTML = money;
+        var classfiCellDom = rowDom.insertCell();
+        classfiCellDom.innerHTML = classfi;
+    }
+</script>
+</html>

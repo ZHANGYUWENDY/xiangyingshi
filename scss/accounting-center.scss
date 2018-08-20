@@ -1,0 +1,37 @@
+@charset "utf-8";
+body,div,p,ul,ol,li,dl,dt,dd,form,table,tr,td,h1,h2,h3,h4,h5,h6,fieldset,input,textarea,figure{
+	margin:0;
+	padding:0;
+}
+body{
+	font-family:"微软雅黑",Arial;
+}
+a{
+	text-decoration:none;
+}
+ul,ol{
+	list-style:none;
+}
+img{
+	display: block;
+}
+.y-out-content{
+    width: 90%;
+    height: 500px;
+    padding: 0 15px;
+    background:#eaeff5;
+}
+.y-account{
+    border-left:1px solid #dadce1;
+    border-right:1px solid #dadce1;
+    width: 100%;
+    background:#ffffff;
+    height: 500px;
+}
+.y-account-top{
+    height:78px;
+    line-height: 78px;
+    text-align: center;
+    font-size:20px;
+    color:#0b0c0c;
+}

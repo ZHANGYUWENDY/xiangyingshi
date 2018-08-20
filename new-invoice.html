@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <title>新建合同</title>
+    <link rel="stylesheet" type="text/css" href="css/new-invoice.scss"/>
+</head>
+<body>
+    <div class="y-new-content">
+        <div class="y-new-content-top">
+            新建发票
+        </div>
+        <table id="t">
+			<tr>
+				<td>供应商名称</td>
+				<td>发票日期</td>
+				<td>发票号码</td>
+                <td>发票金额</td>
+                <td>发票类型</td>
+			</tr>
+		</table>
+	<hr/>
+        <div class="y-new-content-center">
+            <ul>
+                <li><i class="iconfont icon-star_key"></i>发票类型</li>
+                <select id="classfiId">
+                    <option value="普通发票" checked>普通发票</option>
+                    <option value="机打发票">机打发票</option>
+                    <option value="定额发票">定额发票</option>
+                    <option value="增值税专用发票">增值税专用发票</option>
+                </select>
+            </ul>
+            <ul>
+                <li><i class="iconfont icon-star_key"></i>发票日期</li>
+                <select id="dateId">
+                    <option value="2018-06-28" checked>2018-06-29</option>
+                </select>
+              
+            </ul>
+            <ul>
+                <li><i class="iconfont icon-star_key"></i>发票号码</li>
+                <input id="numId"  type="text" value="请输入发票号码"/>
+            </ul>
+            <ul>
+                <li><i class="iconfont icon-star_key"></i>发票金额</li>
+                <input type="text" id="moneyId" value="请输入发票金额"/>
+            </ul>
+            <!-- <ul>
+                <li>税率</li>
+                <select>
+                    <option value="3%" checked>3%</option>
+                    <option value="10%">10%</option>
+                    <option value="20%">20%</option>
+                    <option value="25%">25%</option>
+                    <option value="30%">30%</option>
+                    <option value="35%">35%</option>
+                    <option value="45%">45%</option>
+                </select>
+            </ul>
+            <ul>
+                <li>税额</li>
+                <input type="text" value="请输入税额"/>
+            </ul> -->
+            <ul>
+                <li><i class="iconfont icon-star_key"></i>供应商</li>
+                <select  id="businessId" class="supplier">
+                    <option value="供应商1" checked>供应商1</option>
+                    <option value="供应商2">供应商2</option>
+                    <option value="供应商3">供应商3</option>
+                    <option value="供应商4">供应商4</option>
+                </select>
+            </ul>
+            <!-- <ul>
+                <li><i class="iconfont icon-star_key"></i>关联合同</li>
+                <span><h5>已选择0合同</h5> <button id="y-btn1">[点击选择]</button></span>
+            </ul>
+            <ul>
+                <li>附件</li>
+                <p><i class="iconfont icon-add"></i>点击添加附件</p>
+            </ul> -->
+        </div>
+         <div class="y-new-content-bot"> 
+            <form action="">
+                <input class="y-cancel" type="button"  onclick="deletePerson(this)" value="取消"/>
+                <input class="y-save" type="button" onclick="addInfor()" value="保存"/>
+             </form> 
+         </div>
+
+    </div>
+
+    <script type="text/javascript">
+        
+        function deletePerson(obj){
+            if(confirm("亲，您真的要取消吗？")==true){
+                var trDom  = obj.parentNode.parentNode;
+                trDom.parentNode.removeChild(trDom);	
+            }	
+        }
+
+
+        function addInfor(){
+           
+            
+            //二、完成表格行的增加
+            //1)、获取数据
+            var business= document.getElementById("businessId").value;
+            var date= document.getElementById("dateId").value;
+            var num= document.getElementById("numId").value;
+            var money= document.getElementById("moneyId").value;
+            var classfi= document.getElementById("classfiId").value;
+            
+            //2)、给表格创建行和列
+            var tableDom  = document.getElementById("t");
+            var rowDom = tableDom.insertRow();
+            var businessCellDom = rowDom.insertCell();
+            businessCellDom.innerHTML = business;
+
+
+            var dateCellDom = rowDom.insertCell();
+            dateCellDom.innerHTML = date;
+            var numCellDom = rowDom.insertCell();
+            numCellDom.innerHTML = num;
+            var moneyCellDom = rowDom.insertCell();
+            moneyCellDom.innerHTML = money;
+            var classfiCellDom = rowDom.insertCell();
+            classfiCellDom.innerHTML = classfi;
+        }
+    </script>
+
+<!-- 
+    <div class="y-choice-agreement">
+        <div class="y-choice-agreement-top">
+            选择合同
+            <span class="m-modal-close"><i class="iconfont icon-cha"></i></span>
+        </div>
+        <div class="y-choice-serach">
+            <input type="button" value="请输入搜索内容..."/>
+            <i class="iconfont icon-sousuo"></i>       
+        </div>
+        <div class="y-choice-content">
+            <ul>
+                <div class="y-choice-box">
+                    <p><input type="checkbox" id="checkA"/>23423</p>
+                    <span>2018-06-19</span>
+                </div>
+                <li>
+                    <span>合同编号<p>YF201806191002</p></span>
+                    <span>合同金额<p>￥23 423.00</p></span>
+                </li>
+                <li>
+                    <span>已收票<p>￥0.00</p></span>
+                    <span>本次收票金额<h5><b>￥</b>最大可输入23423</h5></span>
+                </li>
+            </ul>
+            <ul>
+                <div class="y-choice-box">
+                    <p><input type="checkbox" id="checkA"/>11544</p>
+                    <span>2018-06-25</span>
+                </div>
+                <li>
+                    <span>合同编号<p>YF201806251003</p></span>
+                    <span>合同金额<p>￥1000</p></span>
+                </li>
+                <li>
+                    <span>已收票<p>￥0.00</p></span>
+                    <span>本次收票金额<h5><b>￥</b>最大可输入23423</h5></span>
+                </li>
+            </ul>
+        </div>
+        <div class="y-choice-footer">
+            <div>已选择<p>0</p>&nbsp;个合同,收费金额:<p>￥0.00</p></div> 
+            <form action="">
+                    <input class="y-cancel" type="reset" value="取消"/>
+                    <input class="y-save" type="submit" value="保存"/>
+            </form>
+        </div>
+    </div> -->
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>物流车辆</title>
+    <link rel="stylesheet" href="css/rc11.css">
+</head>
+
+<body>
+    <div class="rc7">
+        <div class="rc7-top">
+            <p>物流车辆信息</p>
+            <a class="new-add" href="">新增</a>
+        </div>
+        <div class="rc7-content">
+            <table id="t" class="rc7-content-center" border="1" cellspacing="0">
+                <tr class="rc7-content-head">
+                    <th>车牌号</th>
+                    <th>司机</th>
+                    <th>手机</th>
+                    <th>车型</th>
+                    <th>负责区域</th>
+                    <th>是否专用车</th>
+                    <th>车辆归属</th>
+                    <th>操作</th>
+                </tr>
+                <tr class="rc7-content-list">
+                    <td>晋H798789</td>
+                    <td>李栋</td>
+                    <td>1546678456</td>
+                    <td>别克</td>
+                    <td>太原杏花岭</td>
+                    <td>是</td>
+                    <td>自有</td>
+                    <td>修改</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+    <div class="m-modal">
+        <div class="y-m-model">
+            <div class="y-m-content-top">
+                 新增物流车辆信息
+            </div>
+            <ul class="y-m-content-center">
+                <form action="">
+                    <li>
+                        <span>车牌号</span>
+                        <input id="nameId" type="text" value="" />
+                    </li>
+                    <li>
+                        <span>司机</span>
+                        <input id="sexId" type="text" value="" />
+                    </li>
+                    <li>
+                        <span>手机</span>
+                        <input id="idnum" type="text" value="" />
+                    </li>
+                    <li>
+                        <span>车型</span>
+                        <input id="locaId" type="text" value="" />
+                    </li>
+                    <li>
+                        <span>负责区域</span>
+                        <input id="phoneId" type="text" value="" />
+                    </li>
+                    <li>
+                        <span>是否专属车</span>
+                        <select name="" id="carId">
+                            <option value="是">是</option>
+                            <option value="否">否</option>
+                        </select>
+                    </li>
+                    <li>
+                        <span>车辆归属</span>
+                        <select name="" id="pnumId">
+                            <option value="自有">自有</option>
+                            <option value="第三方所有">第三方所有</option>
+                        </select>
+                       
+                    </li>
+                    <p>
+                        <input class="m-btn-cancel" type="button" value="取消" />
+                        <input class="m-btn-sure" type="button" value="保存" />
+                    </p>
+                </form>
+
+            </ul>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<script>
+    $(".new-add").click(function () {
+        $(".m-modal").toggle();
+        return false;
+    });
+    $(".m-btn-cancel").click(function () {
+        $(".m-modal").hide();
+    });
+    $(function () {
+        $(".m-btn-sure").click(function () {
+            var a1 = $('#nameId').val();
+            var a2 = $('#sexId').val();
+            var a3 = $('#idnum').val();
+            var a4 = $('#locaId').val();
+            var a5 = $('#phoneId').val();
+            var a6= $('#carId').val();
+             var a7 = $('#pnumId').val();             
+            $("#t tbody").append('<tr><td>' + a1 +'</td><td>' + a2 + '</td><td>' + a3 + '</td><td>' + a4 + '</td><td>'+a5+'</td ><td>'+a6+'</td><td>'+a7+'</td><td></td></tr>');
+            $(".y-m-content-center").find("li input").val("");
+            $(".m-modal").hide();
+        });
+    });
+</script>

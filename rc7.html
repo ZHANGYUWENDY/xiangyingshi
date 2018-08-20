@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>县域交易额信息</title>
+    <link rel="stylesheet" href="css/rc7.css">
+</head>
+<body>
+    <div class="rc7">
+        <div class="rc7-top">
+            <p>县域交易额</p>
+            <a class="new-add" href="">新增</a>
+        </div>
+        <div class="rc7-content">
+            <table id="t" class="rc7-content-center" border="1" cellspacing="0">
+                <tr class="rc7-content-head" >
+                    <th>时间</th>
+                    <th>线上交易</th>
+                    <th>线下交易</th>
+                    <th>总计</th>
+                </tr>           
+                <tr class="rc7-content-list">
+                    <td>2017.01</td>
+                    <td>95</td>
+                    <td>5</td>
+                    <td>100</td>
+                </tr>
+                <tr class="rc7-content-list">
+                    <td>2017.02</td>
+                    <td>93</td>
+                    <td>5</td>
+                    <td>100</td>
+                </tr>          
+            </table>        
+        </div>
+       
+    </div>
+    <div class="m-modal">
+        <div class="y-m-model">
+            <div class="y-m-content-top">
+                新增交易额
+            </div>
+            <ul class="y-m-content-center">
+                    <form action="">
+                        <li >
+                            <span>时间 :</span>
+                            <select id="year" value="">
+                                <option value="2018">2018</option>
+                                <option value="2018">2019</option>
+                                <option value="2018">2020</option>
+                                <option value="2018">2021</option>
+                                <option value="2018">2022</option>
+                            </select>
+                            <select id="month" value="">
+                                <option value="1">01</option>
+                                <option value="2">02</option>
+                                <option value="3">03</option>
+                                <option value="4">04</option>
+                                <option value="5">05</option>
+                                <option value="6">06</option>
+                                <option value="7">07</option>
+                                <option value="8">08</option>
+                                <option value="9">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                        </li>
+                        <li >
+                            <span>线上交易 :</span>
+                            <input id="oltp" type="text" value="" />
+                        </li>
+                        <li >
+                            <span>线下交易 :</span>
+                            <input id="linetrade" type="text" value="" />
+                        </li>
+                       
+                        <p>
+                            <input class="m-btn-cancel" type="button" value="取消" />
+                            <input class="m-btn-sure" type="button" value="保存" />
+                        </p>
+                    </form>
+              
+            </ul>
+
+        </div>
+    </div>
+   
+</body>
+</html>
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<script>
+    $(".new-add").click(function () {
+        $(".m-modal").toggle();
+        return false;
+    });
+    $(".m-btn-cancel").click(function () {
+        $(".m-modal").hide();
+    });
+    $(function () {
+        $(".m-btn-sure").click(function () {
+            var a1 = $("#year").val();
+            var a5=$("#month").val();
+            var a2 = $("#oltp").val();
+            var a3 = $("#linetrade").val();
+            var a4 = parseInt(a2)+parseInt(a3);
+            $("#t tbody").append('<tr><td>'+a1+'.'+a5+'</td><td>'+a2+'</td><td>'+a3+'</td><td>'+a4+'</td></tr>');
+            $(".y-m-content-center").find("li input").val("");
+            $(".m-modal").hide();
+        });
+    });
+</script>
